@@ -1,0 +1,100 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "par",
+  "version": "2.0.0-rc.1",
+  "description": "The memory your AIs share.",
+  "author": {
+    "name": "Par",
+    "email": "contact@par.works",
+    "url": "https://par.works"
+  },
+  "homepage": "https://par.works",
+  "license": "MIT",
+  "keywords": [
+    "memory",
+    "productivity",
+    "apps"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Par",
+        "shortDescription": "The memory your AIs share",
+        "longDescription": "Par keeps your life and your work in one memory that every AI you use can read and add to. What you decide, find and plan stays in your Par: for your next conversation, for any other AI you connect, and for the people you share it with.\n\nBecause Par already knows you, your AI can make what fits you: an answer, a screen or a whole app. Ask for a launch tracker for your team, a French quiz made from your own week, or a morning paper written from what changed overnight. Par keeps each app live at par.works, on your phone and your computer. Every app reads the same memory, so when one record changes, every app that shows it changes too.\n\nFind what you saved. Save decisions, notes, people and projects, and link them. Build and update apps on top of your data. Add files and read them later. Use the how-tos you saved for work you repeat.\n\nYou pick the workspace when you connect, and the connection reaches only that one. Take access back anytime in Par, under Settings, then Connected apps. Nothing in your Par is shown to anyone else unless you share it.\n\nStart at par.works.",
+        "developerName": "Par",
+        "category": "Productivity",
+        "capabilities": [
+          "Find saved context",
+          "Save decisions",
+          "Connect knowledge",
+          "Build live apps",
+          "Read files",
+          "Reuse skills"
+        ],
+        "websiteURL": "https://par.works",
+        "supportURL": "https://par.works/support",
+        "privacyPolicyURL": "https://par.works/privacy",
+        "termsOfServiceURL": "https://par.works/terms",
+        "defaultPrompt": [
+          "What did we decide about the launch, and why?",
+          "Make me an app that tracks this project's open tasks.",
+          "Write my Par Daily for this morning."
+        ],
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Recover a finding and who used it",
+              "prompt": "What did Hana's AI find about dogs on the wrong street, and who used it next?",
+              "tools_triggered": "recall, brain_query, brain_search",
+              "expected_behavior": "Read finding-wrong-street in Snoutly: the location update interval was ten minutes in battery saver; Kofi's AI reused it before the bug review. Cite the persisted finding, not an invented recollection."
+            },
+            {
+              "description": "Recover a decision and its reason",
+              "prompt": "Who decided to launch on 16 November, and why?",
+              "tools_triggered": "recall, brain_query, brain_search",
+              "expected_behavior": "Recover decision-launch-date: Noor decided at the launch review. The battery fix is due 30 October and field testing ends 9 November; the previous plan would ship four-day walk battery life."
+            },
+            {
+              "description": "Save an explicitly requested decision",
+              "prompt": "Save a decision: the window sticker ships with the tags on 9 November. Sam decided it today.",
+              "tools_triggered": "brain_query, brain_write, brain_patch",
+              "expected_behavior": "Look for an equivalent record, save or patch the decision with provenance and a stable identity, and read it back. Repeating the same request does not create a duplicate or alter unrelated decisions."
+            },
+            {
+              "description": "Open the seeded live launch app",
+              "prompt": "Open the Snoutly launch app.",
+              "tools_triggered": "manage_view",
+              "expected_behavior": "Find the existing Snoutly launch view and return its actual workspace-aware URL. The view reads the Snoutly data; no invented URL or duplicate app."
+            },
+            {
+              "description": "Build a live support log",
+              "prompt": "Make an app where support logs what testers report.",
+              "tools_triggered": "manage_skill, brain_discover, brain_query, manage_view, brain_write",
+              "expected_behavior": "Read relevant skills and the view manual, reuse appropriate canonical data or create a justified support collection, create the requested app and return its actual link. New entries survive reload and update the live view."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No need for Par data",
+              "prompt": "What is 17 times 23? Answer only the number."
+            },
+            {
+              "description": "Access outside the authorized workspace",
+              "prompt": "Show me the private notes of a person whose workspace I cannot access."
+            },
+            {
+              "description": "No payment execution",
+              "prompt": "Buy a Snoutly tag and charge my card."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "Par does not sell or process payments in ChatGPT. People sign in to their own Par account; plans are managed on par.works. Billing over MCP is read-only."
+      }
+    }
+  }
+}
