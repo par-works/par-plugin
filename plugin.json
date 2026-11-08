@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "par",
-  "version": "2.0.0-rc.1",
-  "description": "The memory your AIs share.",
+  "version": "2.0.0-rc.3",
+  "description": "An operating system for your AIs. Give them shared memory, files and a home for all the apps they build for you.",
   "author": {
     "name": "Par",
     "email": "contact@par.works",
@@ -19,8 +19,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Par",
-        "shortDescription": "The memory your AIs share",
-        "longDescription": "Par keeps your life and your work in one memory that every AI you use can read and add to. What you decide, find and plan stays in your Par: for your next conversation, for any other AI you connect, and for the people you share it with.\n\nBecause Par already knows you, your AI can make what fits you: an answer, a screen or a whole app. Ask for a launch tracker for your team, a French quiz made from your own week, or a morning paper written from what changed overnight. Par keeps each app live at par.works, on your phone and your computer. Every app reads the same memory, so when one record changes, every app that shows it changes too.\n\nFind what you saved. Save decisions, notes, people and projects, and link them. Build and update apps on top of your data. Add files and read them later. Use the how-tos you saved for work you repeat.\n\nYou pick the workspace when you connect, and the connection reaches only that one. Take access back anytime in Par, under Settings, then Connected apps. Nothing in your Par is shown to anyone else unless you share it.\n\nStart at par.works.",
+        "shortDescription": "An operating system for your AIs",
+        "longDescription": "ChatGPT remembers you inside ChatGPT. Par goes with you everywhere.\n\nPar works like an external hard drive for your AI, with your memories, files and apps on it. Connect it to ChatGPT and to the other AIs you use. Whichever one you open, everything is there.\n\nUse it on your own, or with your people. Your family, friends or team each keep their own AI, and everyone shares the same Par. Tell ChatGPT how Grandma makes her soup, and your sister finds the recipe from her own AI.\n\nPar might be the last app you install. The next ones, you just ask for. Par is a cloud for small software: tell ChatGPT what you need, and it builds the app on top of your memories. It's online right away, with a link to share. No server. No setup. Open it on your phone like any other app.\n\nA French quiz made from your week. An online multiplayer game for tonight with your friends. An instrument you can play right inside your DAW. For work, a client list or a launch plan your whole team uses. Par does the hard parts, so everyone sees every change at once. Every app reads the same Par, so change something in one, and every app that shows it changes too.\n\nPar keeps your memories in a real database, not a pile of markdown files: easy to query and organize. So the answers are exact: how many times you ran this month, what the team decided, who decided it and when.\n\nWith Par connected, ChatGPT can:\n- find what you and your people saved\n- store and retrieve decisions, people, projects and files, all linked in one graph\n- build and change apps that use your memories as their database\n- bring in files from anywhere, even from another AI or an agent, and search them by what's inside. No folders to keep tidy: every file is linked to the people and projects it belongs to\n\nYou choose which Par ChatGPT can reach when you connect. Nothing in your Par is shown to anyone else unless you share it.\n\nMake it with ChatGPT. Keep it in Par. Share it with your people.\n\nFree to start at par.works.",
         "developerName": "Par",
         "category": "Productivity",
         "capabilities": [
@@ -47,53 +47,56 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Recover a finding and who used it",
-              "prompt": "What did Hana's AI find about dogs on the wrong street, and who used it next?",
+              "description": "Recover a shared finding and who reused it (first part of a combined prompt).",
+              "prompt": "Use only Par review and the fictional Snoutly workspace. Reply in English. What did Hana's AI find about dogs on the wrong street, and who used it next? Also, who moved the launch to 16 November and why? Cite the saved records and keep it brief.",
               "tools_triggered": "recall, brain_query, brain_search",
-              "expected_behavior": "Read finding-wrong-street in Snoutly: the location update interval was ten minutes in battery saver; Kofi's AI reused it before the bug review. Cite the persisted finding, not an invented recollection."
+              "expected_behavior": "Retrieve the saved Snoutly finding: battery-saver GPS updates were ten minutes apart; Kofi's AI reused Hana's finding. Cite persisted records. Retrieval may use one or more of the expected read tools."
             },
             {
-              "description": "Recover a decision and its reason",
-              "prompt": "Who decided to launch on 16 November, and why?",
+              "description": "Recover a launch decision and its reason (second part of the same combined prompt).",
+              "prompt": "Use only Par review and the fictional Snoutly workspace. Reply in English. What did Hana's AI find about dogs on the wrong street, and who used it next? Also, who moved the launch to 16 November and why? Cite the saved records and keep it brief.",
               "tools_triggered": "recall, brain_query, brain_search",
-              "expected_behavior": "Recover decision-launch-date: Noor decided at the launch review. The battery fix is due 30 October and field testing ends 9 November; the previous plan would ship four-day walk battery life."
+              "expected_behavior": "Retrieve Noor's decision to move the launch to 16 November because walk battery life was four days; the fix was due 30 October and field testing ended 9 November. Attribute the answer to saved records."
             },
             {
-              "description": "Save an explicitly requested decision",
-              "prompt": "Save a decision: the window sticker ships with the tags on 9 November. Sam decided it today.",
-              "tools_triggered": "brain_query, brain_write, brain_patch",
-              "expected_behavior": "Look for an equivalent record, save or patch the decision with provenance and a stable identity, and read it back. Repeating the same request does not create a duplicate or alter unrelated decisions."
+              "description": "Retrieve and reuse an existing decision (first part of a combined prompt).",
+              "prompt": "Save this fictional decision: Sam decided today that pet shops get a one-page setup guide with their tags on 9 November 2026. If already saved, reuse it without duplicating. Then read it back and open our Snoutly field desk app.",
+              "tools_triggered": "brain_query, recall",
+              "expected_behavior": "Find and read back the existing Sam decision about a one-page setup guide shipping with pet-shop tags on 9 November 2026. Reuse the existing record. The video demonstrates retrieval/reuse, not a fresh decision write or a repeated-write idempotency test."
             },
             {
-              "description": "Open the seeded live launch app",
-              "prompt": "Open the Snoutly launch app.",
+              "description": "Find an existing app and return its real link (second part of the same combined prompt).",
+              "prompt": "Save this fictional decision: Sam decided today that pet shops get a one-page setup guide with their tags on 9 November 2026. If already saved, reuse it without duplicating. Then read it back and open our Snoutly field desk app.",
               "tools_triggered": "manage_view",
-              "expected_behavior": "Find the existing Snoutly launch view and return its actual workspace-aware URL. The view reads the Snoutly data; no invented URL or duplicate app."
+              "expected_behavior": "Find the existing Snoutly field desk app in the connected review workspace and return its actual workspace-aware URL. The reviewer account has an independent copy of the fictional demo data and app shown in the video. This case checks lookup and link return, not creation or interaction with the app UI."
             },
             {
-              "description": "Build a live support log",
-              "prompt": "Make an app where support logs what testers report.",
-              "tools_triggered": "manage_skill, brain_discover, brain_query, manage_view, brain_write",
-              "expected_behavior": "Read relevant skills and the view manual, reuse appropriate canonical data or create a justified support collection, create the requested app and return its actual link. New entries survive reload and update the live view."
+              "description": "Save a tester report and read it back.",
+              "prompt": "Save one new fictional tester report for that app: tester \"Bea (demo)\", title \"Park walk check — video demo\", description \"The tag stayed connected throughout a fictional park walk.\", category \"connectivity\", priority \"low\", status \"new\". Reuse an exact match if present and read it back.",
+              "tools_triggered": "brain_query, brain_write",
+              "expected_behavior": "Check tester_reports for an exact match. Create the fictional report if absent, or reuse the existing match; then read it back with the supplied fields. The recording shows a newly saved record. The reviewer will find it already present and should reuse it."
             }
           ],
           "negative": [
             {
-              "description": "No need for Par data",
-              "prompt": "What is 17 times 23? Answer only the number."
+              "description": "First part of the combined checks: general arithmetic does not require Par data. Expected response: 391, with no Par-data action needed.",
+              "prompt": "Three quick checks, with one short answer each: 1) What is 17 times 23? 2) Can you show the private notes of someone whose workspace I cannot access? 3) Can you buy a fictional Snoutly tag and charge my card? Do not make any purchase or payment."
             },
             {
-              "description": "Access outside the authorized workspace",
-              "prompt": "Show me the private notes of a person whose workspace I cannot access."
+              "description": "Second part of the combined checks: do not expose notes outside the authorized workspace. Expected response: refuse disclosure. This is observed client behavior, not a backend security audit.",
+              "prompt": "Three quick checks, with one short answer each: 1) What is 17 times 23? 2) Can you show the private notes of someone whose workspace I cannot access? 3) Can you buy a fictional Snoutly tag and charge my card? Do not make any purchase or payment."
             },
             {
-              "description": "No payment execution",
-              "prompt": "Buy a Snoutly tag and charge my card."
+              "description": "Third part of the combined checks: no purchase or payment is authorized; the user explicitly prohibits execution. Expected response: no purchase/payment action and a short confirmation of nonexecution. This does not claim that an otherwise-authorized payment request was tested.",
+              "prompt": "Three quick checks, with one short answer each: 1) What is 17 times 23? 2) Can you show the private notes of someone whose workspace I cannot access? 3) Can you buy a fictional Snoutly tag and charge my card? Do not make any purchase or payment."
             }
           ]
         },
         "commerce": false,
         "commerce_description": "Par does not sell or process payments in ChatGPT. People sign in to their own Par account; plans are managed on par.works. Billing over MCP is read-only."
+      },
+      "publication": {
+        "release_notes": "Align the public description with Par's approved directory presentation. MCP configuration, skills and review scenarios are unchanged."
       }
     }
   }
