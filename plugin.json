@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "par",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "description": "An operating system for your AIs. Give them shared memory, files and a home for all the apps they build for you.",
   "author": {
     "name": "Par",
@@ -19,8 +19,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Par",
-        "shortDescription": "An operating system for your AIs",
-        "longDescription": "ChatGPT remembers you inside ChatGPT. Par goes with you everywhere.\n\nPar works like an external hard drive for your AI, with your memories, files and apps on it. Connect it to ChatGPT and to the other AIs you use. Whichever one you open, everything is there.\n\nUse it on your own, or with your people. Your family, friends or team each keep their own AI, and everyone shares the same Par. Tell ChatGPT how Grandma makes her soup, and your sister finds the recipe from her own AI.\n\nPar might be the last app you install. The next ones, you just ask for. Par is a cloud for small software: tell ChatGPT what you need, and it builds the app on top of your memories. It's online right away, with a link to share. No server. No setup. Open it on your phone like any other app.\n\nA French quiz made from your week. An online multiplayer game for tonight with your friends. An instrument you can play right inside your DAW. For work, a client list or a launch plan your whole team uses. Par does the hard parts, so everyone sees every change at once. Every app reads the same Par, so change something in one, and every app that shows it changes too.\n\nPar keeps your memories in a real database, not a pile of markdown files: easy to query and organize. So the answers are exact: how many times you ran this month, what the team decided, who decided it and when.\n\nWith Par connected, ChatGPT can:\n- find what you and your people saved\n- store and retrieve decisions, people, projects and files, all linked in one graph\n- build and change apps that use your memories as their database\n- bring in files from anywhere, even from another AI or an agent, and search them by what's inside. No folders to keep tidy: every file is linked to the people and projects it belongs to\n\nYou choose which Par ChatGPT can reach when you connect. Nothing in your Par is shown to anyone else unless you share it.\n\nMake it with ChatGPT. Keep it in Par. Share it with your people.\n\nFree to start at par.works.",
+        "shortDescription": "Operating system for your AIs",
+        "longDescription": "Your memory, files and apps, across the AIs you connect.\n\nPar works like an external hard drive for your AI, with your memories, files and apps on it. Connect it to ChatGPT and to the other AIs you use. Access the same Par from each connected AI.\n\nUse it on your own, or with your people. Your family, friends or team can each keep their own AI and share a Par workspace. Save Grandma's soup recipe with ChatGPT, and your sister can find it from her own connected AI.\n\nThe next app you need, you can ask for. Par is a cloud for small software: ask ChatGPT to build an app on top of your memories. Par hosts the app and gives you a link to share. No server to manage. Open it on your phone.\n\nA French quiz made from your week. An online multiplayer game for tonight with your friends. An instrument you can play right inside your DAW. For work, a client list or a launch plan your whole team uses. Apps can share the same data, so a change can carry across the apps that use it.\n\nPar keeps your memories in a database you can query and organize. Query what happened: how many times you ran this month, what the team decided, who decided it and when.\n\nWith Par connected, ChatGPT can:\n- find what you and your people saved\n- store and retrieve decisions, people, projects and files, all linked in one graph\n- build and change apps that use your memories as their database\n- bring in files from anywhere, even from another AI or an agent, and search them by what's inside. Link files to the people and projects they belong to\n\nYou choose which Par ChatGPT can reach when you connect. Nothing in your Par is shown to anyone else unless you share it.\n\nMake it with ChatGPT. Keep it in Par. Share it with your people.",
         "developerName": "Par",
         "category": "Productivity",
         "capabilities": [
@@ -96,7 +96,7 @@
         "commerce_description": "Par does not sell or process payments in ChatGPT. People sign in to their own Par account; plans are managed on par.works. Billing over MCP is read-only."
       },
       "publication": {
-        "release_notes": "Align the public description with Par's approved directory presentation. MCP configuration, skills and review scenarios are unchanged."
+        "release_notes": "Align Par's description with its approved directory presentation and OpenAI listing requirements. MCP configuration, skills and review scenarios are unchanged."
       }
     }
   }
