@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "par",
-  "version": "2.0.0-rc.4",
+  "version": "2.0.0-rc.5",
   "description": "An operating system for your AIs. Give them shared memory, files and a home for all the apps they build for you.",
   "author": {
     "name": "Par",
@@ -96,7 +96,17 @@
         "commerce_description": "Par does not sell or process payments in ChatGPT. People sign in to their own Par account; plans are managed on par.works. Billing over MCP is read-only."
       },
       "publication": {
-        "release_notes": "Align Par's description with its approved directory presentation and OpenAI listing requirements. MCP configuration, skills and review scenarios are unchanged."
+        "release_notes": "Align Par's description with its approved directory presentation and OpenAI listing requirements. MCP configuration, skills and review scenarios are unchanged.",
+        "translations": {
+          "pt-BR": {
+            "subtitle": "Sistema operacional para IAs",
+            "description": "Sua memória, seus arquivos e apps, nas IAs que você conecta.\n\nO Par funciona como um HD externo para sua IA, com suas memórias, arquivos e apps. Conecte-o ao ChatGPT e às outras IAs que você usa. Acesse o mesmo Par a partir de cada IA conectada.\n\nUse sozinho ou com outras pessoas. Sua família, seus amigos ou sua equipe podem usar suas próprias IAs e compartilhar um workspace no Par. Salve a receita de sopa da sua avó com o ChatGPT, e sua irmã poderá encontrá-la pela IA que ela conectou.\n\nO próximo app de que você precisar, você pode pedir. O Par é uma nuvem para pequenos aplicativos: peça ao ChatGPT para criar um app que use suas memórias. O Par hospeda o app e fornece um link para compartilhar. Sem servidor para gerenciar. Abra no seu celular.\n\nUm quiz de francês feito a partir da sua semana. Um jogo multiplayer online para hoje à noite com seus amigos. Um instrumento que você pode tocar dentro da sua DAW. Para o trabalho, uma lista de clientes ou um plano de lançamento que toda a equipe usa. Os apps podem compartilhar os mesmos dados, de modo que uma mudança possa se refletir nos apps que os utilizam.\n\nO Par guarda suas memórias em um banco de dados que você pode consultar e organizar. Consulte o que aconteceu: quantas vezes você correu neste mês, o que a equipe decidiu, quem decidiu e quando.\n\nCom o Par conectado, o ChatGPT pode:\n- encontrar o que você e outras pessoas salvaram\n- guardar e recuperar decisões, pessoas, projetos e arquivos, todos conectados em um grafo\n- criar e alterar apps que usam suas memórias como banco de dados\n- trazer arquivos de qualquer lugar, até de outra IA ou de um agente, e buscá-los pelo conteúdo. Conecte arquivos às pessoas e aos projetos relacionados\n\nAo conectar, você escolhe qual Par o ChatGPT pode acessar. Nada no seu Par é mostrado a outras pessoas, a menos que você compartilhe.\n\nCrie com o ChatGPT. Guarde no Par. Compartilhe com sua turma."
+          },
+          "es-419": {
+            "subtitle": "Sistema operativo para tus IA",
+            "description": "Tu memoria, archivos y apps, en las IA que conectas.\n\nPar funciona como un disco duro externo para tu IA, con tus recuerdos, archivos y apps. Conéctalo a ChatGPT y a las otras IA que usas. Accede al mismo Par desde cada IA conectada.\n\nÚsalo por tu cuenta o con otras personas. Tu familia, tus amigos o tu equipo pueden usar sus propias IA y compartir un espacio de trabajo en Par. Guarda la receta de sopa de tu abuela con ChatGPT, y tu hermana podrá encontrarla desde su propia IA conectada.\n\nLa próxima app que necesites, puedes pedirla. Par es una nube para pequeñas aplicaciones: pídele a ChatGPT que cree una app a partir de tus recuerdos. Par aloja la app y te da un enlace para compartir. Sin un servidor que administrar. Ábrela en tu teléfono.\n\nUn quiz de francés basado en tu semana. Un juego multijugador en línea para esta noche con tus amigos. Un instrumento que puedes tocar dentro de tu DAW. Para el trabajo, una lista de clientes o un plan de lanzamiento que usa todo tu equipo. Las apps pueden compartir los mismos datos, de modo que un cambio pueda reflejarse en las apps que los usan.\n\nPar guarda tus recuerdos en una base de datos que puedes consultar y organizar. Consulta lo que pasó: cuántas veces corriste este mes, qué decidió el equipo, quién lo decidió y cuándo.\n\nCon Par conectado, ChatGPT puede:\n- encontrar lo que tú y otras personas guardaron\n- guardar y recuperar decisiones, personas, proyectos y archivos, todos conectados en un grafo\n- crear y modificar apps que usan tus recuerdos como base de datos\n- traer archivos de cualquier lugar, incluso de otra IA o de un agente, y buscarlos por su contenido. Vincula los archivos con las personas y los proyectos a los que pertenecen\n\nAl conectarte, eliges a qué Par puede acceder ChatGPT. Nada de tu Par se muestra a otras personas a menos que lo compartas.\n\nCréalo con ChatGPT. Guárdalo en Par. Compártelo con los tuyos."
+          }
+        }
       }
     }
   }
